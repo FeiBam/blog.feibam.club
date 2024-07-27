@@ -97,10 +97,13 @@ request.getArticleById = function (id){
     })
 }
 
-request.getArticleTag = function (id){
+request.getArticleByTag = function(tag){
     return axios.request({
-        method:BlogApi.getArticleTags.Method,
-        url:`${BlogApi.getArticleTags.PATH}/${id}`
+        method:BlogApi.getArticleByTag.Method,
+        url:`${BlogApi.getArticleByTag.PATH}`,
+        data:{
+            tag:tag
+        }
     })
 }
 

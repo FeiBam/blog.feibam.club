@@ -12,13 +12,13 @@
         <div class="Pagination-Content">
             <div>
                 <div v-if="NowPage !== 0" class="Pagination-Button" style="border-radius: 32px 10px 10px 32px">
-                    <p>$t(previouspage)</p>
+                    <p>{{$T("previouspage")}}</p>
                 </div>
                 <p v-else>{{ NowPage + 1 }} / {{ AllPage }}</p>
             </div>
             <div>
                 <div v-if="(NowPage + 1) < AllPage" class="Pagination-Button" style="border-radius: 10px 32px 32px 10px;">
-                    <p>$t(nextpage)</p>
+                    <p>{{$T("nextpage")}}</p>
                 </div>
                 <p v-if="NowPage === 0">
                 </p>
@@ -49,13 +49,16 @@
         },
         data(){
             return{
+                articles:{}
             }
         },
         mounted() {
+            console.log(this.$route.params.num)
             Store.dispatch(`Blog/${ BlogActionsMixin.GetPageInfo}`).then(()=>{
                 if (this.$route.fullPath === '/'){
                     Store.dispatch(`Blog/${BlogActionsMixin.GetPage}`,1)
                 }else Store.dispatch(`Blog/${BlogActionsMixin.GetPage}`,this.$route.params.num)
+                this.articles === this.Articles
             })
         },
         computed:{

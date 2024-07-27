@@ -43,8 +43,8 @@ const routes = [
             {
                 path:'/Tag/:TagName',
                 name:'ArticlesByTag',
-                component:() => { return true }
-            }
+                component:() => import('../view/blog/Main/view/front/view/Articles/index')
+            },
         ]
     },
     {
